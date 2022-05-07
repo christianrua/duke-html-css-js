@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Prototype</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/static/css/prototype.css" rel="stylesheet">
+        <script src="{{ url_for('static', filename='js/prototype.js') }}"></script>
+    </head>
+    <body>
+
+        <h1>Upload prototype.</h1>
+        
+        <!-- <input type="text" id="finput">
+        <input type="button" value="Upload" onclick="upload()">     -->
+        <canvas id="can"></canvas>
+        <canvas id="canvasGrey"></canvas>
+        <p>Filename: <input type="text" id="inputText" /><input type="button" value="Upload Text Name" id="inputButton" onclick="uploadText()"/></p>
+        <p>Filename: <input type="file" multiple="false" accept="image/*" id="finput" onchange="upload()" /></p>
+        <p>Make Grayscale <input type="button" value="make gray scale" id="grayScale" onclick="grayScale()" /></p>
+    <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
+        
+    </body>
+</html>

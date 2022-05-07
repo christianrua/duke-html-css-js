@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Using a Canvas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/static/css/color_picker.css" rel="stylesheet">
+        <script src="{{ url_for('static', filename='js/using_canvas.js') }}"></script>
+    </head>
+    <body>
+    <h1>Color Picker</h1>
+        <canvas id="d1" ></canvas>
+        <!-- <input type="button" value="Make lime" onclick="dolime()" /> -->
+        <br>
+        <input type="color" value="#001A57" onchange="docolor()" id="clr" >
+        <p>Change Color</p>
+        <hr>
+        <input type="range" min="10" max="100" value="10" id="sldr" oninput="doSquare()" >
+        <p>Make a Square Using Slider</p>
+    </body>
+</html>

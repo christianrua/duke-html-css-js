@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Using a Canvas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/static/css/paint_canvas.css" rel="stylesheet">
+        <script src="{{ url_for('static', filename='js/using_canvas.js') }}"></script>
+    </head>
+    <body>
+
+        <h1>Using a Canvas</h1>
+        <canvas id="d1"></canvas>
+        <P></P>
+        <input type="button" value="make lime" onclick="dolime()" />
+        <input type="button" value="make yellow" onclick="doyellow()" />
+
+        <h1>Canvas practices</h1>
+        <canvas id="div1" class="orangeback"></canvas>
+        <canvas id="div2" class="fuchsiaback"></canvas>
+        <input type="button" value="Change Color" onclick="changecolor()" />
+        <input type="button" value="to red" onclick="doRed()" />
+        <input type="button" value="to blue" onclick="doBlue()" />
+
+        <!-- Change Canvas Colors with Buttons
+
+        1. In the HTML panel, create two buttons, one for each of two colors you choose (e.g., red and blue). Do not worry about the event handler yet.
+
+        2. In the JS panel, write two doColor() functions in the JS panel (e.g., doRed() and doBlue()). For each one:
+
+            Get the left canvas element.
+
+            Then use the style.backgroundColor property to change the background color. Previously you changed the color by changing the CSS class; this is an alternative way to change a color property.
+
+        3. Have your two new buttons each call the appropriate doColor() functions. -->
+        
+        <hr>
+        <h1>Paint Your Own Picture.</h1>
+        <div id="some"></div>
+        <canvas id="canvas_" ></canvas>
+        <canvas id="dd1" ></canvas>
+        <p>Set width<input type="text" onchange="setWidth(this.value)" />Set Height<input type="text" onchange="setHeight(this.value)"/></p>
+
+        
+    </body>
+</html>

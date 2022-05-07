@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Filter Fun</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/static/css/filter_fun.css" rel="stylesheet">
+        <script src="{{ url_for('static', filename='js/filter_fun.js') }}"></script>
+    </head>
+    <body>
+
+        <h1>Filter Fun</h1>
+        
+        <!-- <input type="text" id="finput">
+        <input type="button" value="Upload" onclick="upload()">     -->
+        <canvas id="leftCanvas"></canvas>
+        <!-- <canvas id="rightCanvas"></canvas> -->
+        <h2>Load Image</h2>
+        <p><input type="file" multiple="false" accept="image/*" id="image" onchange="uploadImage()" /></p>
+        <!-- <p>Background: <input type="file" multiple="false" accept="image/*" id="background" onchange="uploadBackground()" /></p> -->
+        <h2>Choose Filter</h2>
+        <p><input type="button" value="grayScale" onchange="grayScale()" /><input type="button" value="red" onchange="redScale()"/></p>
+        <p><input type="button" value="reset value" onchange="resetImage()" /></p>
+        <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
+        
+    </body>
+</html>

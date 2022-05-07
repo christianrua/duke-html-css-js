@@ -1,0 +1,49 @@
+
+h1 {
+    text-align: center;
+    color: blueviolet;
+}
+
+p {
+    color: darkorange;
+    text-align: center;
+}
+
+/* this is a class, starts with a dot, you can use it in many placeses. */
+.liGreen {
+    color: green;
+}
+
+.liBlue {
+    color: blue;
+}
+
+/* this is a element, has an Id and you can only use it in a single place. */
+#cakeImg {
+    float:right;
+}
+
+div {
+    width: 200px;
+    font-size: 28px;
+}
+
+/* #d1 {
+    background-color: lightblue;
+}
+
+#d2 {
+    background-color: yellow;
+} */
+
+.yellowback {
+    background-color: yellow;
+}
+
+.blueback {
+    background-color: lightblue;
+}
+
+.whiteback {
+    background-color: white;
+}

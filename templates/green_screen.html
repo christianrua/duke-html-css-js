@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Green Screen</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/static/css/green_screen.css" rel="stylesheet">
+        <script src="{{ url_for('static', filename='js/green_screen.js') }}"></script>
+    </head>
+    <body>
+
+        <h1>Green Screen Web Page</h1>
+        
+        <!-- <input type="text" id="finput">
+        <input type="button" value="Upload" onclick="upload()">     -->
+        <canvas id="leftCanvas"></canvas>
+        <canvas id="rightCanvas"></canvas>
+        <p>Foreground: <input type="file" multiple="false" accept="image/*" id="foreground" onchange="uploadForeground()" /></p>
+        <p>Background: <input type="file" multiple="false" accept="image/*" id="background" onchange="uploadBackground()" /></p>
+        <p><input type="button" value="Create Composite" id="createComposite" onclick="createComposite()" /></p>
+        <p><input type="button" value="Clear Canvances" id="clearCanvances" onclick="clearCanvances()" /></p>
+    <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
+        
+    </body>
+</html>
