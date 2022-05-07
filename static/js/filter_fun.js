@@ -2,6 +2,7 @@
 var image = null;
 var redImage = null;
 var greyScaleImage = null;
+var rainbowImage = null;
 
 function getCanvas(canvasName) {
     return document.getElementById(canvasName);
@@ -16,19 +17,25 @@ function uploadImage(){
     image = new SimpleImage(input);
     greyScaleImage = new SimpleImage(input);
     redImage  = new SimpleImage(input);
+    rainbowImage = new SimpleImage(input);
     var canvas = getCanvas("leftCanvas");
     image.drawTo(canvas);
 }
 
+function imageIsLoaded(image) {
+    if(image == null){
+        return false;
+    } else {
+        return true;
+    }
+}
+
 function grayScale() {
-    console.log("entering gray scale");
     var canvas =  getCanvas("leftCanvas");
 
-    if(greyScaleImage == null || greyScaleImage.complete()){
-        alert("image loaded");
-        return;
+    if(!imageIsLoaded(greyScaleImage)){
+        alert("you must to upload an image");
     }
-
 
     for (var pixel of greyScaleImage.values()){
         var red = pixel.getRed(); 
@@ -44,10 +51,9 @@ function grayScale() {
 }
 
 function redScale() {
-    console.log("entering red scale");
-    if(redImage == null || redImage.complete()){
-        alert("image loaded");
-        return;
+
+    if(!imageIsLoaded(redImage)){
+        alert("you must to upload an image");
     }
 
     var canvas =  getCanvas("leftCanvas");
@@ -56,26 +62,124 @@ function redScale() {
         var redValue = pixel.getRed();
         var greenValue = pixel.getGreen();
 
-        var blueGreenProportion = blueValue + greenValue;
+        var rgbAverage = (blueValue + greenValue + redValue)/3;
 
-        if (redValue < blueGreenProportion){
-            pixel.setBlue = 0;
-            pixel.setGreen = 0;
-            pixel.setRed = 255;
+        if (rgbAverage < 128){
+            pixel.setBlue(0);
+            pixel.setGreen(0);
+            pixel.setRed(2*rgbAverage);
+        } else {
+            pixel.setBlue(2*rgbAverage-255);
+            pixel.setGreen(2*rgbAverage-255);
+            pixel.setRed(255);
         }; 
     
-    redImage.drawTo(canvas);   
-        
     }
-}
+    redImage.drawTo(canvas); 
+}    
 
 function resetImage() {
-    console.log("entering reset image");
-    if(image == null || image.complete()){
-        alert("image loaded");
-        return;
-    }
-    var canvas =  getCanvas("leftCanvas");
-    image.drawTo(canvas);
+    uploadImage()
 
+}
+
+function rainbowFilter() {
+    var canvas =  getCanvas("leftCanvas");
+
+    if(!imageIsLoaded(rainbowImage)){
+        alert("you must to upload an image");
+    }
+
+    imageHeight = rainbowImage.getHeight();
+
+    for(var pixel of rainbowImage.values()){
+        var blueValue = pixel.getBlue();
+        var redValue = pixel.getRed();
+        var greenValue = pixel.getGreen();
+
+        var pixelYValue = pixel.getY();
+
+        var rgbAverage = (blueValue + greenValue + redValue)/3;
+
+        if(pixelYValue <= imageHeight/7) {
+            if (rgbAverage < 128){
+                pixel.setBlue(0);
+                pixel.setGreen(0);
+                pixel.setRed(2*rgbAverage);
+            } else {
+                pixel.setBlue(2*rgbAverage-255);
+                pixel.setGreen(2*rgbAverage-255);
+                pixel.setRed(255);
+            }; 
+        }
+        else if (Math.round((1/7) * imageHeight) < pixelYValue <= Math.round((2/7) * imageHeight)) {
+            if (rgbAverage < 128){
+                pixel.setBlue(0);
+                pixel.setGreen(0.8*rgbAverage);
+                pixel.setRed(2*rgbAverage);
+            } else {
+                pixel.setBlue(2*rgbAverage-255);
+                pixel.setGreen(1.2*rgbAverage-51);
+                pixel.setRed(255);
+            }; 
+        }
+        else if (Math.round((2/7) * imageHeight) < pixelYValue <= Math.round((3/7) * imageHeight)) {
+            if (rgbAverage < 128){
+                pixel.setBlue(0);
+                pixel.setGreen(2*rgbAverage);
+                pixel.setRed(2*rgbAverage);
+            } else {
+                pixel.setBlue(2*rgbAverage-255);
+                pixel.setGreen(255);
+                pixel.setRed(255);
+            }; 
+
+        }
+        else if (Math.round((3/7) * imageHeight) < pixelYValue <= Math.round((4/7) * imageHeight)) {
+            if (rgbAverage < 128){
+                pixel.setBlue(0);
+                pixel.setGreen(2*rgbAverage);
+                pixel.setRed(0);
+            } else {
+                pixel.setBlue(2*rgbAverage-255);
+                pixel.setGreen(255);
+                pixel.setRed(2*rgbAverage-255);
+            }; 
+        }
+        else if (Math.round((4/7) * imageHeight) < pixelYValue <= Math.round((5/7) * imageHeight)) {
+            if (rgbAverage < 128){
+                pixel.setBlue(2*rgbAverage);
+                pixel.setGreen(0);
+                pixel.setRed(0);
+            } else {
+                pixel.setBlue(2*rgbAverage-255);
+                pixel.setGreen(255);
+                pixel.setRed(2*rgbAverage-255);
+            }; 
+
+        }
+        else if (Math.round((5/7) * imageHeight) < pixelYValue <= Math.round((6/7) * imageHeight)) {
+            if (rgbAverage < 128){
+                pixel.setBlue(2*rgbAverage);
+                pixel.setGreen(0);
+                pixel.setRed(0.8*rgbAverage);
+            } else {
+                pixel.setBlue(255);
+                pixel.setGreen(2*rgbAverage-255);
+                pixel.setRed(1.2*rgbAverage-51);
+            }; 
+        } else {
+            if (rgbAverage < 128){
+                pixel.setBlue(1.6*rgbAverage);
+                pixel.setGreen(0);
+                pixel.setRed(1.6*rgbAverage);
+            } else {
+                pixel.setBlue(0.4*rgbAverage+153);
+                pixel.setGreen(2*rgbAverage-255);
+                pixel.setRed(0.4*rgbAverage+153);
+            };
+
+        }
+    }
+    rainbowImage.drawTo(canvas); 
 }
