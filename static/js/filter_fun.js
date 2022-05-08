@@ -91,6 +91,9 @@ function rainbowFilter() {
     }
 
     imageHeight = rainbowImage.getHeight();
+    
+    
+
 
     for(var pixel of rainbowImage.values()){
         var blueValue = pixel.getBlue();
@@ -98,10 +101,14 @@ function rainbowFilter() {
         var greenValue = pixel.getGreen();
 
         var pixelYValue = pixel.getY();
+        
 
         var rgbAverage = (blueValue + greenValue + redValue)/3;
+        
 
-        if(pixelYValue <= imageHeight/7) {
+        if(pixelYValue <= Math.round((1/7) * imageHeight)) {
+            console.log("entering 1/7, 1/7 value", Math.round((1/7) * imageHeight));
+            console.log("pixelYValue",pixelYValue);
             if (rgbAverage < 128){
                 pixel.setBlue(0);
                 pixel.setGreen(0);
@@ -112,7 +119,9 @@ function rainbowFilter() {
                 pixel.setRed(255);
             }; 
         }
-        else if (Math.round((1/7) * imageHeight) < pixelYValue <= Math.round((2/7) * imageHeight)) {
+        else if (pixelYValue <= Math.round((2/7) * imageHeight) && Math.round((1/7) * imageHeight) <= pixelYValue) {
+            console.log("entering 2/7, 1/7 value and 2/7  value",Math.round((1/7) * imageHeight),Math.round((2/7) * imageHeight));
+            console.log("pixelYValue",pixelYValue);
             if (rgbAverage < 128){
                 pixel.setBlue(0);
                 pixel.setGreen(0.8*rgbAverage);
@@ -123,7 +132,9 @@ function rainbowFilter() {
                 pixel.setRed(255);
             }; 
         }
-        else if (Math.round((2/7) * imageHeight) < pixelYValue <= Math.round((3/7) * imageHeight)) {
+        else if (pixelYValue <= Math.round((3/7) * imageHeight) && Math.round((2/7) * imageHeight) <= pixelYValue) {
+            console.log("entering 3/7, 2/7 value and 3/7  value",Math.round((2/7) * imageHeight),Math.round((3/7) * imageHeight));
+            console.log("pixelYValue",pixelYValue);
             if (rgbAverage < 128){
                 pixel.setBlue(0);
                 pixel.setGreen(2*rgbAverage);
@@ -135,7 +146,9 @@ function rainbowFilter() {
             }; 
 
         }
-        else if (Math.round((3/7) * imageHeight) < pixelYValue <= Math.round((4/7) * imageHeight)) {
+        else if (pixelYValue <= Math.round((4/7) * imageHeight && Math.round((3/7) * imageHeight) <= pixelYValue)) {
+            console.log("entering 4/7, 3/7 value and 4/7  value",Math.round((3/7) * imageHeight),Math.round((4/7) * imageHeight));
+            console.log("pixelYValue",pixelYValue);
             if (rgbAverage < 128){
                 pixel.setBlue(0);
                 pixel.setGreen(2*rgbAverage);
@@ -146,7 +159,9 @@ function rainbowFilter() {
                 pixel.setRed(2*rgbAverage-255);
             }; 
         }
-        else if (Math.round((4/7) * imageHeight) < pixelYValue <= Math.round((5/7) * imageHeight)) {
+        else if (pixelYValue <= Math.round((5/7) * imageHeight) && Math.round((4/7) * imageHeight) <= pixelYValue) {
+            console.log("entering 5/7, 4/7 value and 5/7  value",Math.round((4/7) * imageHeight),Math.round((5/7) * imageHeight));
+            console.log("pixelYValue",pixelYValue);
             if (rgbAverage < 128){
                 pixel.setBlue(2*rgbAverage);
                 pixel.setGreen(0);
@@ -158,7 +173,9 @@ function rainbowFilter() {
             }; 
 
         }
-        else if (Math.round((5/7) * imageHeight) < pixelYValue <= Math.round((6/7) * imageHeight)) {
+        else if (pixelYValue <= Math.round((6/7) * imageHeight) && Math.round((5/7) * imageHeight) <=  pixelYValue ) {
+            console.log("entering 6/7, 5/7 value and 6/7  value",Math.round((5/7) * imageHeight),Math.round((6/7) * imageHeight));
+            console.log("pixelYValue",pixelYValue);
             if (rgbAverage < 128){
                 pixel.setBlue(2*rgbAverage);
                 pixel.setGreen(0);
@@ -169,6 +186,8 @@ function rainbowFilter() {
                 pixel.setRed(1.2*rgbAverage-51);
             }; 
         } else {
+            console.log("entering 7/7");
+            console.log("pixelYValue",pixelYValue);
             if (rgbAverage < 128){
                 pixel.setBlue(1.6*rgbAverage);
                 pixel.setGreen(0);
